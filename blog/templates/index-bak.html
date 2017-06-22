@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<HTML>
+	<TITLE>Domo</TITLE>
+	<head>
+	{% include 'head.html' %}
+	<link rel="stylesheet" type="text/css" href="/static/css/weather/style.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/tab.css" />
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/static/js/canvas-particle.js"></script>
+	<script type="text/javascript" src="/static/js/roll/prototype.js"></script>
+	<script type="text/javascript" src="/static/js/roll/ImageSlide.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.niceHover.js"></script>
+	
+	
+	</head>	
+<body>
+{% include 'nav.html' %}
+<div class="con">
+	<div class="row_content">
+		<div class="left_content">
+			<!--滚动横幅-->
+			<div id="focusImage" class="slide">
+				<ul class="contents">
+					<li class="current">
+						<div class="image"><a href="#"><img src="/static/images/1.jpg" width="600" height="282"></a></div>
+						<div class="text">
+							<span class="title"><a href="#">小水管哭了！《战争机器4》总容量已超100GB</a></span>
+							<p>《战争机器4》在刚推出之时，在Win10平台上的容量就已经达到了惊人的73GB，这次让《战争机器4》总容量超过100GB的更新文件，是来自情人节期间的新内容。</p>
+						</div>
+					</li>
+					<li>
+						<div class="image"><a href="#"><img src="/static/images/2.jpg" width="600" height="282"></a></div>
+						<div class="text">
+							<span class="title"><a href="#">《无冬OL》5月19日停运 主机版不受影响</a></span>
+							<p>近日，完美宣布《无冬OL》将于2017年5月19日正式停运，在关闭服务器后，官方会将玩家的充值返还到完美钱包或银行账户中。同时，官方强调称本次的停服针对中国区的服务器，主机版不受影响。</p>
+						</div>
+					</li>
+					<li>
+						<div class="image"><a href="#"><img src="/static/images/3.jpg" width="600" height="282"></a></div>
+						<div class="text">
+							<span class="title"><a href="#">《丧尸围城4》评价不佳？卡普空：上手度太低</a></span>
+							<p>与迄今为止的系列相比，《丧尸围城4》让更多的玩家能够轻松上手，但新游戏收到的意见更加宽泛。在未来Capcom打算通过发布额外的数字下载内容来持续增加游戏销量。</p>
+						</div>
+					</li>
+					<li>
+						<div class="image"><a href="#"><img src="/static/images/4.jpg" width="600" height="282"></a></div>
+						<div class="text">
+							<span class="title"><a href="#">国外暴雪玩家3D打印《星际争霸2》虫族单位</a></span>
+							<p>近日，暴雪游戏死忠粉3D打印设计师Francesco Orrù通过建模软件ZBrush与3D打印，完成自己的《星际争霸2》3D打印作品新作，让我们来一同鉴赏。</p>
+						</div>
+					</li>
+					<li>
+						<div class="image"><a href="#"><img src="/static/images/5.jpg" width="600" height="282"></a> </div>
+						<div class="text">
+							<span class="title"><a href="#">索尼：希望推出《地平线：黎明时刻》续作</a></span>
+							<p>距离《地平线：黎明时刻》的发售还有不到2周时间，但索尼似乎正在找寻为其推出续作的可能，并希望其能成为一款旗下代表性系列作品，对于这部作品报以高期待。</p>
+						</div>
+					</li>
+				</ul>
+				
+				<div class="triggers">
+					<a href="javascript:;" class="cur current"><img src="/static/images/1.jpg" width="78" height="38"></a>
+					<a href="javascript:;"><img src="/static/images/2.jpg" width="70" height="38"></a>
+					<a href="javascript:;"><img src="/static/images/3.jpg" width="70" height="38"></a>
+					<a href="javascript:;"><img src="/static/images/4.jpg" width="70" height="38"></a>
+					<a href="javascript:;"><img src="/static/images/5.jpg" width="70" height="38"></a>
+				</div>
+			
+				<div class="icon-dot">
+					<a href="javascript:;" class="cur current"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+				</div>
+				
+				<span class="link-watch pre down"></span>
+				<span class="link-watch next down"></span>
+			</div>
+			<!--滚动横幅结束-->
+			<!--文章列表-->
+			<!--1-->
+			
+			{% for title in Articles%}
+			<div class="article hover">
+				<div class="border-left"></div>
+				<div class="border-bottom"></div>
+				<div class="border-top"></div>
+				<div class="border-right"></div>
+				<div class="article-con">
+					<div class="entry">
+						<table>
+							<tr>
+								<td style="width:200px" rowspan="2"><img src="/static/images/a.jpg"></td>
+								<td class="entry-title">
+									<a href="">{{title.title}}</a>
+								</td>
+							</tr>
+							<tr class="entry-intro">
+								<td><p>{{title.intro}}</p></td>
+							</tr>
+						</table>
+					</div>
+					<div class="entry-index">
+						<div class="entry-index-right">
+							<span class="entry-index-right-tag"><i class="iconfont" style="font-size:14px;">&#xe600;</i>&nbsp
+							<span >{{title.publishDate|date:'Y-m-d'}}</span></span>&nbsp&nbsp
+							<span class="entry-index-right-tag"><i class="iconfont" style="font-size:14px;">&#xe607;</i>&nbsp
+							<span>{{title.author.realName}}</span></span>&nbsp&nbsp
+							<span class="entry-index-right-tag"><i class="iconfont" style="font-size:14px;">&#xe606;</i>&nbsp
+							<span>{{title.category.cateName}}</span></span>&nbsp&nbsp
+							<span class="entry-index-right-tag"><i class="iconfont" style="font-size:14px;">&#xe601;</i>&nbsp
+							<span>暂无评论</span></span>
+						</div>
+						<span class="entry-index-left"><a href="/blog/{{title.id}}/article/">阅读全文</a></span>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			
+			<!--分页插件-->
+			<div id="page" class="page" style="margin-top:40px;text-align:center;">
+			</div>
+		</div>
+		<div class="right_content">			
+			<div class="container1" style="margin:0 auto;">
+				<svg id="back">
+					<radialGradient id="SVGID_1_" cx="0" cy="0" r="320.8304" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFDE17;stop-opacity:0.7"/>
+						<stop  offset="1" style="stop-color:#FFF200;stop-opacity:0"/>
+					</radialGradient>
+					<path id="sunburst" style="fill:url(#SVGID_1_);" d="M0,319.7c-18.6,0-37.3-1.6-55.5-4.8L-7.8,41.4c5.1,0.9,10.6,0.9,15.7,0L56,314.8C37.6,318,18.8,319.7,0,319.7z
+						 M-160.8,276.6c-32.5-18.8-61.3-42.9-85.5-71.6L-34,26.2c3.4,4.1,7.4,7.4,12,10.1L-160.8,276.6z M161.3,276.4L22.1,36.2
+						c4.5-2.6,8.6-6,12-10.1l212.6,178.5C222.5,233.4,193.8,257.6,161.3,276.4z M-302.5,108.3C-315.4,73-321.9,36-322-1.8l277.6-0.5
+						c0,5.3,0.9,10.4,2.7,15.2L-302.5,108.3z M302.6,107.8L41.8,12.8c1.7-4.7,2.6-9.7,2.6-14.9c0-0.3,0-0.6,0-1H322l0-1.3l0,1.9
+						C322,35.4,315.5,72.5,302.6,107.8z M-41.8-17.5l-261-94.5c12.8-35.4,31.6-68,55.8-96.9L-34.1-30.8C-37.5-26.8-40.1-22.3-41.8-17.5z
+						 M41.7-17.7c-1.8-4.8-4.4-9.3-7.8-13.3l212-179.2c24.3,28.8,43.3,61.3,56.3,96.6L41.7-17.7z M-22.2-40.8l-139.6-240
+						c32.7-19,68.1-32,105.2-38.6L-8-46.1C-13-45.2-17.8-43.4-22.2-40.8z M22-40.9c-4.4-2.6-9.2-4.3-14.2-5.1l47.1-273.6
+						c37.2,6.4,72.7,19.2,105.4,38L22-40.9z"/>
+				</svg>		
+				<div id="card" class="weather" style="margin:0 auto;">
+					<svg id="inner">
+						<defs>
+							<path id="leaf" d="M41.9,56.3l0.1-2.5c0,0,4.6-1.2,5.6-2.2c1-1,3.6-13,12-15.6c9.7-3.1,19.9-2,26.1-2.1c2.7,0-10,23.9-20.5,25 c-7.5,0.8-17.2-5.1-17.2-5.1L41.9,56.3z"/>
+						</defs>
+						<circle id="sun" style="fill: #F7ED47;" cx="0" cy="0" r="50"/>
+						<g id="layer3"></g>
+						<g id="cloud3" class="cloud"></g>
+						<g id="layer2"></g>
+						<g id="cloud2" class="cloud"></g>
+						<g id="layer1"></g>
+						<g id="cloud1" class="cloud"></g>
+					</svg>
+					<div class="details">
+						<div class="temp">{{Weather.temperature_curr}}<span>℃</span><br/><span>{{Weather.location}}</span></div>
+						<div class="right" style="float:right">
+							<div id="date">{{Weather.day}}</div>
+							<div id="date">{{Weather.week}}</div>
+							<div id="summary">{{Weather.weather}}</div>
+						</div>
+					</div>
+				</div>
+				<svg id="outer"></svg>
+			</div>
+			<!-- 今日头条 -->
+			<div class="widget widget-headline">
+				<div class="widget-inner">
+					<a class="style02" href="http://toutiao.com/i6327921793755513346/" target="_blank">
+					<strong>今日头条</strong>
+					<h4>看风景者的幸福与安全感的累</h4>
+					<p>我们常常看到的风景是：一个人总是仰望和羡慕着别人的幸福，一回头，却发现自己正被仰望和羡慕着。其实，每个人都是幸福的。只是，你的幸福，常常在别人眼里 。</p></a>
+				</div>
+			</div>
+			<!-- 最新文章 -->
+			<div class="widget widget-headline">
+				<div class="widget-inner">
+					<a class="style02" target="_blank">
+					<strong>最新文章</strong>
+					</a>
+					<div class="widget-inner-list">
+						<table>
+							<tr style="height:80%">
+								<td rowspan="2"><img width="100" height="64" src="/static/images/a.jpg"></td>
+								<td style="display:block;">Python爬虫实践之爬取嗅事百科的段子</td>
+							</tr>
+							<tr style="height:20%">
+								<td style="display:block;">2017-4-1</td>
+							</tr>
+						</table>
+					</div>
+					<div class="widget-inner-list">
+						<table>
+							<tr style="height:80%">
+								<td rowspan="2"><img width="100" height="64" src="/static/images/a.jpg"></td>
+								<td style="display:block;">Python爬虫实践之爬取嗅事百科的段子</td>
+							</tr>
+							<tr style="height:20%">
+								<td style="display:block;">2017-4-1</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- 最新评论 -->
+			<div class="widget widget-headline">
+				<div class="widget-inner">
+					<a class="style02" href="http://toutiao.com/i6327921793755513346/" target="_blank">
+					<strong>最新评论</strong>
+					</a>
+					<div style="height:300px;">
+					
+					</div>
+				</div>
+			</div>
+			<!--最新评论
+			<div class="comment">
+				<div class="als-viewport">
+	                <ul class="dynamiclist">
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534453" target="_blank">qq_123</a>
+	                        <span class="vote">投票支持创建 微服务知识库</span>
+	                        <span class="date">7分钟前</span></li> 
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534455" target="_blank">qq_125</a>
+	                        <span class="vote">投票支持创建 kubernetes知识库</span>
+	                        <span class="date">7分钟前</span></li>
+	                    
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534356" target="_blank">qq_126</a>
+	                        <span class="vote">投票支持创建 Storm知识库</span>
+	                        <span class="date">17分钟前</span></li>
+	                    
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534357" target="_blank">qq_127</a>
+	                        <span class="vote">投票支持创建 Openstack知识库</span>
+	                        <span class="date">17分钟前</span></li>
+	                    
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534358" target="_blank">qq_128</a>
+	                        <span class="vote">投票支持创建 Ruby知识库</span>
+	                        <span class="date">17分钟前</span></li>
+	                    
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534360" target="_blank">qq_130</a>
+	                        <span class="vote">投票支持创建 MongoDB知识库</span>
+	                        <span class="date">17分钟前</span></li>
+	                    
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534361" target="_blank">qq_36534356</a>
+	                        <span class="vote">投票支持创建 erlang知识库</span>
+	                        <span class="date">17分钟前</span></li>
+	                    
+	                    <li class="als-item">
+	                        <span class="dotted"></span>
+	                        <a href="http://my.csdn.net/qq_36534356" target="_blank">qq_36534356</a>
+	                        <span class="vote">投票支持创建 kubernetes知识库</span>
+	                        <span class="date">17分钟前</span></li>
+	
+	                </ul>
+	            </div>
+			</div>-->
+			
+			<!--标签云-->
+			<div class="widget widget-headline widget-tag">
+				<div class="widget-inner">
+					<a class="style02" href="http://toutiao.com/i6327921793755513346/" target="_blank">
+					<strong>最新评论</strong>
+					</a>
+					<div class="target_cloud" id="tagscloud">
+						<a href="http://www.17sucai.com/" class="tagc1">Python</a>
+						<a href="http://www.17sucai.com/" class="tagc2">云计算</a>
+						<a href="http://www.17sucai.com/" class="tagc5">Docker</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Java</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Hadoop</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Python</a>
+						<a href="http://www.17sucai.com/" class="tagc2">云计算</a>
+						<a href="http://www.17sucai.com/" class="tagc5">Docker</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Java</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Hadoop</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Python</a>
+						<a href="http://www.17sucai.com/" class="tagc2">云计算</a>
+						<a href="http://www.17sucai.com/" class="tagc5">Docker</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Java</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Hadoop</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Python</a>
+						<a href="http://www.17sucai.com/" class="tagc2">云计算</a>
+						<a href="http://www.17sucai.com/" class="tagc5">Docker</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Java</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Hadoop</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Python</a>
+						<a href="http://www.17sucai.com/" class="tagc2">云计算</a>
+						<a href="http://www.17sucai.com/" class="tagc5">Docker</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Java</a>
+						<a href="http://www.17sucai.com/" class="tagc2">Hadoop</a>
+						<a href="http://www.17sucai.com/" class="tagc1">Spark</a>
+					</div>
+				</div>
+			</div>
+			<div id="tabs" class="widget">
+				<ul class="widget-nav">
+					<li><a href="#tabs-1" title="">关于本站</a></li>
+					<li><a href="#tabs-2" title="">友情链接</a></li>
+				</ul>
+				<div id="tabs_container">
+					<div id="tabs-1" style="height:200px;border:1px solid red">
+						<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus.</p>
+					</div>
+					<div id="tabs-2">
+						   <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor.</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- end -->
+		</div>
+	</div>
+</div>
+{% include 'footer.html' %}
+
+<!-- 天气插件必须放最后 -->
+<script type="text/javascript" src="/static/js/weather/TweenMax.min.js"></script>
+<script type="text/javascript" src="/static/js/weather/snap.svg-min.js"></script>
+<script type="text/javascript" src="/static/js/weather/main.js"></script>
+<script type="text/javascript" src="/static/js/jquery.roundabout.js"></script>
+<script type="text/javascript" src="/static/js/tabulous.js"></script>
+<script type="text/javascript">
+blog.index.pagination({{pageCount|safe}},{{currPage|safe}});
+//加载天气信息
+var weather = [{ type:'{{Weather.tag}}', name: 'Snow'}];
+initWeather(weather);
+
+$(function(){
+	//$("#slider-3 .slider").slide({mainCell:".bd ul",titCell:".hd li",trigger:"click",effect:"leftLoop",autoPlay:true,delayTime:700,interTime:7000,pnLoop:false,titOnClassName:"active"});
+	blog.index.silde();
+	$('#tabs').tabulous({
+    	effect: 'scale'
+    });	
+	new ImageSlide({project:"#focusImage",content:".contents li",tigger:".triggers a",	dot:".icon-dot a",watch:".link-watch",auto:!0,hide:!0});
+	var lanren_width = $('.article').width();
+	var lanren_height = $('.article').height();
+	$('.article').each(function(){
+		$(this).hover(function(){
+			$(".entry-title a").addClass("entry-title-color");
+			$(this).find('.border-left,.border-right').stop().animate({height:lanren_height+'px'},1400);
+			$(this).find('.border-top,.border-bottom').stop().animate({width:lanren_width+'px'},1400);
+		},function(){
+			$(".entry-title a").removeClass("entry-title-color");
+			$(this).find('.border-left,.border-right').stop().animate({height:'0'},1400);
+			$(this).find('.border-top,.border-bottom').stop().animate({width:'0'},1400);
+		});
+	});
+	$('.box-shadow li').hover(function(){
+		$('span',this).stop().css('height','2px');
+		$('span',this).animate({
+			left:'0',
+			width:'100%',
+			right:'0'
+		},200);
+	},function(){
+		$('span',this).stop().animate({
+			left:'50%',
+			width:'0'
+		},200);
+	});
+	var config = {
+		vx: 4,
+		vy:  4,
+		height: 2,
+		width: 2,
+		count: 100,
+		color: "121, 162, 185",
+		stroke: "100,200,180",
+		dist: 6000,
+		e_dist: 20000,
+		max_conn: 10
+	};
+	CanvasParticle(config);
+});
+</script>
+</body>
+</HTML>

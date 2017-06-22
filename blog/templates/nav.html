@@ -1,0 +1,33 @@
+{% load my_tag %}
+<header class="navbar-wrapper">
+	<div class="navbar navbar-style navbar-fixed-top">
+		<div class="container cl nav-left">
+			<div class="cent" style="width:1200px;margin-left:0 auto;">
+			<!--  -->
+			<nav class="nav navbar-nav nav-collapse" role="navigation" id="Hui-navbar">
+				<a class="logo navbar-logo f-l mr-10 hidden-xs" href="/">Mr.Ming 的个人博客</a>
+				<ul class="nav-detail">
+					<li class="current hover"><a href="/"><i class="fa fa-home"></i>&nbsp首页</a><span></span></li>fa-home
+					<li class="hover"><a href="/blog/tools/cate/"><i class="fa fa-cogs"></i>&nbsp工具</a></li>
+					<li class="hover"><a href="/blog/resource/cate/"><i class="fa fa-paper-plane-o"></i>&nbsp资源</a></li>
+					<li class="dropDown dropDown_hover hover"><a href="#" class="dropDown_A"><i class="fa fa-code"></i>&nbspcodding</a>
+						<ul class="dropDown-menu menu radius box-shadfa-cogsow">
+							{% getCategory as cateList %}
+							{% for cate in cateList %}
+							<li><a href="/blog/{{ cate.cateName }}/cate/">{{ cate.cateName }}</a><span></span></li>
+							{% endfor %}
+						</ul>
+					</li>
+					<li class="hover"><a href="#"><i class="fa fa-envelope-o"></i>&nbsp关于博客</a></li>
+				</ul>
+				<!--导航栏搜索-->
+				<div class="search-panel-fields input-text">
+					<i class="fa fa-search" style="font-size:18px;"></i>
+	        		<input name="q" type="text" id="q" placeholder="开发中..." class="search-q" value=""/>
+	        	</div>
+			</nav>
+			
+		</div>
+		<div>
+	</div>
+</header>

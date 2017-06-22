@@ -1,0 +1,157 @@
+.article_content{border: 1px solid #dfdfdf;margin:0 auto;padding:20px;background: #fff;}
+
+.article_content .article_title{padding:10px 0;border-bottom: 1px dotted #dfdfdf; }
+.article_content .article_title .author{border: 1px solid #ea6f5a;border-radius:3px;color: #ea6f5a;font-size: 10px;padding: 0px 3px;}
+.article_content .article_title .article_name{margin-left: 3px;margin-right: 10px;}
+.article_content .article_title .font_common{color:black;margin-left:2px;margin-right:5px;}
+.article_content .datails{margin:0 auto;margin-top:20px;
+	font-family: Microsoft Yahei;font-size: 14px!important;line-height:2;}
+
+.article_comments{
+	margin:0 auto;margin-top: 50px;
+    backgroud:#fff;
+}
+pre {
+    font-family: 'Consolas', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.015em;
+    line-height: 120%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: #f8f8f8;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+
+
+
+
+/*right staart*/
+.widget-right-index{position:relative;
+	border: 1px solid #eaeaea;
+    border-radius: 4px;
+    background-color: #fff;
+    list-style: none;}
+.widget-right{
+	position:relative;
+	margin-top:15px;
+	border: 1px solid #eaeaea;
+    border-radius: 4px;
+    background-color: #fff;
+    list-style: none;}
+/*right end*/
+.path_nav{
+	font-size: 12px;
+	font-family: 'Microsoft Yahei';
+	color: #555;
+}
+.path_nav a{text-decoration:none;border-bottom: 1px dotted;cursor:pointer;}
+.path_nav .bigScreen{float: right;color: gray;cursor: pointer;border-bottom: 1px dotted;}
+/*底部赞赏*/
+.reward{    margin-top: 50px;}
+.reward .reward-button {
+    font-size: 28px;
+    line-height: 58px;
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0;
+    -webkit-user-select: none;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    border: 1px solid #f1b60e;
+    border-radius: 50%;
+    background: #fccd60;
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fccd60),color-stop(100%,#fbae12),color-stop(100%,#2989d8),color-stop(100%,#207cca));
+    background: -webkit-linear-gradient(top,#fccd60 0,#fbae12 100%,#2989d8 100%,#207cca 100%);
+    background: linear-gradient(to bottom,#fccd60 0,#fbae12 100%,#2989d8 100%,#207cca 100%);
+}
+.reward .reward-code b{font-size: 14px;
+    line-height: 26px;
+    display: block;
+    margin: 0;
+    text-align: center;
+    color: #666;}
+.reward .reward-code {
+    display: block;
+    position: absolute;
+    top: -220px;
+    left: 50%;
+    display: none;
+    width: 320px;
+    height: 170px;
+    margin-left: -175px;
+    padding: 15px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    box-shadow: 0 1px 1px 1px #efefef;
+}
+.reward .reward-code:before {
+    bottom: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-top-color: #cacaca;
+}
+.reward .reward-code:after, .reward .reward-code:before {
+    position: absolute;
+    content: '';
+    border: 10px solid transparent;
+}
+.reward .reward-code:after {
+    bottom: -19px;
+    left: 50%;
+    margin-left: -10px;
+    border-top-color: #fff;
+}
+
+.reward-code span {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+}
+.reward .reward-code img {
+    display: inline-block;
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border: 0;
+}
+.reward .reward-code span.alipay-code {
+    float: left;
+}
+.reward .reward-code span.wechat-code {
+    float: right;
+}
+
+.topcontrol{
+    display:none;
+    z-index: 999;
+    background: #e74c3c;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 24px;
+    position: fixed;
+    bottom: -100px;
+    right: 20px;
+    cursor: pointer;
+    overflow: auto;
+    opacity: .7;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+/*share*/
+.jiathis_style_24x24{margin-top:40px;font-size: 24px;}
+.jiathis_style_24x24 a{text-decoration: none;}

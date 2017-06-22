@@ -1,0 +1,9 @@
+.tie-submit-row{border-top:1px solid #ccc}
+.user-info .nickname{padding-top:10px;}
+.user-info .split-line{display: none;}
+.user-info .exit{display: none;}
+.tie-sync{display: none;}
+#yun-tie-sdk-wrap .input-box{height:110px}
+#yun-tie-sdk-wrap .input-box .input-tips{height:70px;}
+.single-tie:hover{background-color: #fff;}
+.tie-author .name-desp{display: none;}
