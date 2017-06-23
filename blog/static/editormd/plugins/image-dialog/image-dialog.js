@@ -42,12 +42,13 @@
                 var action = settings.imageUploadURL + (settings.imageUploadURL.indexOf("?") >= 0 ? "&" : "?") + "guid=" + guid;
                 //action = "/ImageUpload/"
                 //上传到七牛云存储
-                action = "http://upload.qiniu.com/";
+                action = "http://up-z2.qiniu.com/";
 
                 if (settings.crossDomainUpload)
                 {
                     action += "&callback=" + settings.uploadCallbackURL + "&dialog_id=editormd-image-dialog-" + guid;
                 }
+                //获取cookie的方法
                 var getCookie = function(name){
                     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
                     if(arr=document.cookie.match(reg)){
@@ -56,13 +57,8 @@
                         return null;
                     }
                 };
-                var add = function(val){
-                    //console.log(val);
-                    var a=document.getElementById("file").value
-                    console.log(a);
-                    //document.getElementById("path").value=val;
-                    //console.log(document.getElementById("path"));
-                };
+                var token="";
+
                 //提交表单
                 var btn = function(){
 
@@ -74,10 +70,9 @@
                                         "<label>" + imageLang.url + "</label>" +
                                         "<input type=\"text\" data-url />" + (function(){
                                             return (settings.imageUpload) ? "<div class=\"" + classPrefix + "file-input\">" +
-                                                                                "<input id=\"path\" type=\"hidden\" name=\"key\" value=\"images\" />" +
-                                                                                "<input id=\"file\" type=\"file\" name=\"" + classPrefix + "image-file\" accept=\"image/*\" />" +
-                                                                                "<input type=\"hidden\" name=\"" + DjangoCSRFName + "\" value=\""+DjangoCSRFVal+"\" />" +
-                                                                                "<input id=\"path\" type=\"hidden\" name=\"filepath\" value=\"\" />" +
+                                                                                //"<input id=\"key\" type=\"hidden\" name=\"key\" value=\"images\" />" +
+                                                                                "<input id=\"file\" type=\"file\" name=\"file\" accept=\"image/*\" />" +
+                                                                                "<input type=\"hidden\" id=\"token\" name=\"token\" value=\""+token+"\" />" +
                                                                                 "<input type=\"submit\"  value=\"" + imageLang.uploadButton + "\" />" +
                                                                             "</div>" : "";
                                         })() +
@@ -150,17 +145,20 @@
                     return ;
                 }
 
-				var fileInput  = dialog.find("[name=\"" + classPrefix + "image-file\"]");
+				var fileInput  = dialog.find("[name=\"file\"]");
+                //获取骑牛上传token
+                $.ajax({
+                        url:"/getQiniuToken/",
+                        dataType:"text",
+                        success:function(data){
+                            $("#token").val(data);
+                        }
+                });
 
 				fileInput.bind("change", function() {
 					var fileName  = fileInput.val();
 					var isImage   = new RegExp("(\\.(" + settings.imageFormats.join("|") + "))$"); // /(\.(webp|jpg|jpeg|gif|bmp|png))$/
-                    /*
-                    * ###MJY自己加入，加入文件的绝对路径
-                    * */
-                    var a=document.getElementById("file").value
-                    document.getElementById("path").value=a;
-                    //MJY结束
+
 					if (fileName === "")
 					{
 						alert(imageLang.uploadFileEmpty);
@@ -187,12 +185,11 @@
 
                             var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
                             var json = (body.innerText) ? body.innerText : ( (body.textContent) ? body.textContent : null);
-
+                            alert(body);
                             /*
                             * MJY json为服务器返回 HttpResponse
-                            * alert(json);
+                            *
                             * */
-
                             json = (typeof JSON.parse !== "undefined") ? JSON.parse(json) : eval("(" + json + ")");
 
                             if (json.success === 1)

@@ -115,4 +115,8 @@ def like(request):
     ar = AccessRecord(ip=ip,accessCount=re[0])
     """
     return render(request,'deng.html')
-
+def getToken(request):
+    from qiniu import auth
+    au = auth.Auth("eo8KrWCHq3gJe53OhK1Zv33iHF_FVYDe6TymSCyZ","LhJAkfoEJcbd7-m7m5lMliTO1gg7aCFIA5eTmBmg")
+    token =  au.upload_token("images")
+    return HttpResponse(token)

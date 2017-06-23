@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^blog/(?P<aid>\d+)/article/$', blog.views.article_content,name='article_content'),
     url(r'^blog/(?P<currPage>\d+)/page/$', blog.views.index,name='index'),
     url(r'^blog/(?P<cateName>\w+)/cate/$', blog.views.cate,name='cate'),
+    url(r'^getQiniuToken/',blog.views.getToken,name='get_token'),
     url(r'^dengpei/', blog.views.like,name='like'),
 ]
 urlpatterns += static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT )
