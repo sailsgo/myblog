@@ -13,6 +13,7 @@ def getLasestArticle():
 @register.simple_tag
 def getDailySentence():
     daily = DailySentence.objects.filter(status='1').order_by('-createTime')[0:1]
+    print daily
     if daily:
         return daily[0]
     return {}
@@ -23,5 +24,11 @@ def getTag():
     return co
 @register.simple_tag
 def getCategory():
-
     return Category.objects.all()
+@register.simple_tag
+#获取最热文章
+def get_hots():
+    ar =  Article.objects.filter(status='1').order_by("-readCount")[0:1]
+    if ar:
+        return ar[0]
+    return {}
