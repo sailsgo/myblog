@@ -88,7 +88,8 @@
 			<div class="article">
                 <!--推荐-->
 				<div class="recommend_article">
-                    <a href="" class="user_defined_item red" ><i class="fa fa-angle-double-right"></i><span>【即将直播】人工智能核心技术解析实战！</span></a>
+					{% get_hots as har %}
+                    <a href="/blog/{{har.id}}/article/" class="user_defined_item red" ><i class="fa fa-angle-double-right"></i><span>【热点】{{ har.title }}</span></a>
                 </div>
 				<div class="article-con">
                     {% if Articles %}
@@ -100,7 +101,7 @@
                         </dt>
                         <dd>
                             <h3 class="tracking-ad" data-mod="popu_254"><a href="/blog/{{title.id}}/article/" target="_blank">{{title.title}}</a></h3>
-                            <div class="blog_list_c">{{title.intro}}</div>
+							<div class="blog_list_c">{{title.intro}}</div>
                             <div class="blog_list_b clearfix">
                                 <div class="blog_list_b_l f-l">
                                     <span><i class="fa fa-list-ul"></i><a href="/blog/{{title.category}}/cate/" target="_blank">{{title.category}}</a></span>

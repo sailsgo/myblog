@@ -53,7 +53,7 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 class News(models.Model):
-    news_choices = (('0','不生效'),('1','生效'))
+    news_choices = (('0','私密'),('1','公开'))
     id  = models.AutoField(primary_key=True,verbose_name='新闻ID')
     newsTitle = models.CharField(max_length=100,null=True,verbose_name='新闻标题')
     newsContent = models.TextField(verbose_name='新闻内容')
@@ -62,7 +62,7 @@ class News(models.Model):
     status = models.CharField(choices=news_choices,default='0',null=True,max_length=16,verbose_name='是否生效') #0：表示不生效，1：表示生效
 
 class DailySentence(models.Model):
-    daily_choices = (('0','公开'),('1','私密'))
+    daily_choices = (('0','私密'),('1','公开'))
     id = models.AutoField(primary_key=True,verbose_name='每日一句')
     title = models.CharField(max_length=64,verbose_name='标题',null=True)
     dailycontent = models.TextField(verbose_name='内容',null=True)
