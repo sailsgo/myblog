@@ -183,7 +183,8 @@
                             
                             loading(false);
 
-                            var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
+
+                            var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document;
                             var json = (body.innerText) ? body.innerText : ( (body.textContent) ? body.textContent : null);
                             alert(body);
                             /*
@@ -204,8 +205,27 @@
                             return false;
                         };
                     };
-
-                    dialog.find("[type=\"submit\"]").bind("click", submitHandler).trigger("click");
+                    //为submit绑定点击事件
+                    var submitBtn = function () {
+                        var fb = new FormData();
+                        fb.append("token",$("#token").val());
+                        fb.append("file",$("#file")[0].files[0]);
+                        $.ajax({
+                            url:"http://up-z2.qiniu.com/",
+                            type:'POST',
+                            processData: false,
+                            contentType: false,
+                            data:fb,
+                            success:function (data) {
+                                loading(false);
+                                if(data!=null){
+                                    dialog.find("[data-url]").val("http://orfsxjst1.bkt.clouddn.com/"+data.key);
+                                }
+                            }
+                        });
+                    }
+                    dialog.find("[type=\"submit\"]").bind("click", submitBtn).trigger("click");
+                   // dialog.find("[type=\"submit\"]").bind("click", submitHandler).trigger("click");
 				});
             }
 
