@@ -32,8 +32,31 @@ def article_content(request,aid):
     articleDict={}
     if article:
         articleDict=article[0]
-    print articleDict
-    return render(request,'content.html',{'Article':articleDict})
+    article_list = Article.objects.values_list('id', flat=True).order_by('id')
+    print article_list
+    article_list = list(article_list)
+    preDict = dict()
+    nextDict = dict()
+    if article_list:
+        id_index = article_list.index(long(aid))  # 当前id的索引
+        pre = next = 0
+        if len(article_list)>1:
+            if id_index != 0 and id_index !=len(article_list)-1:      # 如果不是第一篇或最后一篇
+                pre = article_list[id_index-1]
+                next = article_list[id_index+1]
+            else:
+                if id_index == 0:       # 第一篇
+                    next = article_list[id_index+1]
+                if id_index == len(article_list)-1:    # 最后一篇
+                    pre = article_list[id_index-1]
+        elif len(article_list) == 1:
+            pre, next = 0, 0
+        if pre !=0:
+            preDict =  Article.objects.filter(id=pre)[0]
+        if next !=0:
+            nextDict = Article.objects.filter(id=next)[0]
+    print preDict,nextDict
+    return render(request,'content.html',{'Article':articleDict,"pre":preDict,"next":nextDict})
 def cate(request,cateName):
     Articles = Article.objects.filter(category__cateName__icontains='%s'%cateName)
     weather = getWeather(request)

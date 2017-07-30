@@ -16,7 +16,8 @@
 
 .article_comments{
 	margin:0 auto;margin-top: 50px;
-    backgroud:#fff;
+    background-color:#fff;
+    padding: 20px;
 }
 pre {
     font-family: 'Consolas', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
@@ -162,3 +163,5 @@ pre {
 /*share*/
 .jiathis_style_24x24{margin-top:40px;font-size: 24px;}
 .jiathis_style_24x24 a{text-decoration: none;}
+
+.next{border-top:1px solid #dadde5; margin: 30px 0px 30px 0px;padding:20px 10px 0px 10px;}
