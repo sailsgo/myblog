@@ -32,3 +32,8 @@ def get_hots():
     if ar:
         return ar[0]
     return {}
+# 获取友言评论信息
+@register.simple_tag()
+def get_uyan():
+    comment = uyan_comment.objects.all().order_by("time")[0:5]
+    return comment

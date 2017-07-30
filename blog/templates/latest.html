@@ -1,0 +1,32 @@
+{% load my_tag %}
+{% getLasestArticle as latestArticle %}
+<ul>
+    {% for latestArc in latestArticle %}
+    {% if latestArc.readCount <= 100 %}
+    <li>
+        <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
+        <span class="badge badge-primary radius f-r readcount">{{ latestArc.readCount }}</span>
+    </li>
+    {% elif latestArc.readCount > 100 and latestArc.readCount <= 200 %}
+    <li>
+        <a href="/blog/{{latestArc.id}}/article/"  target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
+        <span class="badge badge-secondary radius f-r readcount">{{ latestArc.readCount }}</span>
+    </li>
+    {% elif latestArc.readCount > 200 and latestArc.readCount <= 300 %}
+    <li>
+        <a href="/blog/{{latestArc.id}}/article/"  target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
+        <span class="badge badge-success radius f-r readcount">{{ latestArc.readCount }}</span>
+    </li>
+    {% elif latestArc.readCount > 300 and latestArc.readCount <= 500 %}
+    <li>
+        <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
+        <span class="badge badge-warning radius f-r readcount">{{ latestArc.readCount }}</span>
+    </li>
+    {% else %}
+    <li>
+        <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
+        <span class="badge badge-danger radius f-r readcount">{{ latestArc.readCount }}</span>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>

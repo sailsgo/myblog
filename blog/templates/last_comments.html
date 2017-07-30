@@ -1,0 +1,10 @@
+{% load my_tag %}
+{% get_uyan as comList %}
+<ul>
+    {% for com in comList %}
+    <li>
+        <img class="round" src="{{com.user_photo}}" width="40" height="40"/>
+        <span class="comment-log va-m text-overflow">{{com.content}}</span>
+    </li>
+    {% endfor %}
+</ul>

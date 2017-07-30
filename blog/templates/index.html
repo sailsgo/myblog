@@ -186,37 +186,7 @@
 					<strong><i class="fa fa-navicon"></i>最新文章</strong>
 					</a>
 					<div class="widget-inner-list">
-                        {% getLasestArticle as latestArticle %}
-						<ul>
-                            {% for latestArc in latestArticle %}
-                            {% if latestArc.readCount <= 100 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-primary radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% elif latestArc.readCount > 100 and latestArc.readCount <= 200 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" lass="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-secondary radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% elif latestArc.readCount > 200 and latestArc.readCount <= 300 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-success radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% elif latestArc.readCount > 300 and latestArc.readCount <= 500 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-warning radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% else %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-danger radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
+                        {% include 'latest.html' %}
 					</div>
 				</div>
 			</div>
@@ -227,29 +197,7 @@
 					<strong><i class="fa fa-comments-o"></i>最新评论</strong>
 					</a>
 					<div class="widget-inner-list" style="min-height: 200px;">
-						<div style="text-align: center;padding-top: 50px;">开发中。。。。</div>
-					    <ul style="display: none">
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">一般windows10下面不会有这个</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">楼主博客不错，大赞</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">我想问下你这个地方是怎么实现的</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">也许就是这样的吧</span>
-                            </li>
-                        </ul>
+                        {% include 'last_comments.html' %}
 					</div>
 				</div>
 			</div>
@@ -260,44 +208,19 @@
 					<strong><i class="fa fa-snowflake-o"></i>发现</strong>
 					</a>
 					<div class="widget-inner-tag">
-                        {% getTag as tagList %}
-                        {% for tag in tagList %}
-                        {% if tag.labelColor == '1' %}
-                        <span class="tag color-1" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '2' %}
-                        <span class="tag color-2" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '3' %}
-                        <span class="tag color-3" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '4' %}
-                        <span class="tag color-4" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '5' %}
-                        <span class="tag color-5" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '6' %}
-                        <span class="tag color-6" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% endif %}
-                        {% endfor %}
+					{% include 'label.html' %}
 					</div>
 				</div>
 			</div>
+            <div>
+                <div id="tabs" class="widget HuiTab">
+                    <div class="tabBar clearfix"><span>关于我</span><span>友情链接</span></div>
+                    <div class="tabCon">内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一</div>
+                    <div class="tabCon">内容二</div>
+                    <div class="tabCon">内容三</div>
+			    </div>
+            </div>
 
-			<div id="tabs" class="widget">
-				<ul class="widget-nav">
-					<li class="aa" id="1"><a href="#tabs-1" title="">关于本站</a></li>
-					<li class="aa" id="2"><a href="#tabs-2" title="">友情链接</a></li>
-				</ul>
-				<div id="tabs_container">
-					<div id="tabs-1">
-						<p><img class="head" style="width:100px;height:100px;border-radius:50%;display: block;margin:0 auto;"  src="/static/images/b.jpg"/>
-							<span style="padding:10px 10px 10px 10px;text-align: center;">本博客基于Django搭建，在这里记录和分享学习的东西</span>
-						</p>
-					</div>
-					<div id="tabs-2" class="friendslink">
-                        <li><a href="http://www.my-eclipse.cn" rel="me" target="_blank">MyEclipse中文网</a></li>
-                        <li><a href="http://www.my-eclipse.cn" rel="me" target="_blank">MyEclipse中文网</a></li>
-                        <li><a href="http://www.my-eclipse.cn" rel="me" target="_blank">MyEclipse中文网</a></li>
-					</div>
-				</div>
-			</div>
 
 			<!-- end -->
 		</div>
@@ -312,6 +235,7 @@
 {% if pageCount %}
 blog.index.pagination({{pageCount|safe}},{{currPage|safe}});
 {% endif %}
+$.Huitab("#tabs .tabBar span","#tabs .tabCon","current","click","0");
 //加载天气信息
 var weather = [{ type:'{{Weather.tag}}', name: 'Snow'}];
 // initWeather(weather);
@@ -333,9 +257,6 @@ $(function(){
 	//$("#slider-3 .slider").slide({mainCell:".bd ul",titCell:".hd li",trigger:"click",effect:"leftLoop",autoPlay:true,delayTime:700,interTime:7000,pnLoop:false,titOnClassName:"active"});
     $(window).on("scroll",backToTopFun);
     backToTopFun();
-	$('#tabs').tabulous({
-    	effect: 'scale'
-    });
 	new ImageSlide({project:"#focusImage",content:".contents li",tigger:".triggers a",	dot:".icon-dot a",watch:".link-watch",auto:!0,hide:!0});
 	var config = {
 		vx: 4,

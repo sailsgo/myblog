@@ -31,7 +31,7 @@
 					<span><i class="fa fa-home"></i>&nbspHome : </span>
 					<a href="" >coding</a>
 					<small>&gt;</small>
-					<a href="" >java</a>
+					<a href="/blog/{{ Article.category.cateName }}/cate/" >{{ Article.category.cateName }}</a>
 					<small>&gt;</small>
 					<small></small>
 					<span>{{ Article.title }}</span>
@@ -71,21 +71,18 @@
                         </div>
                 </div>
                 <div class="share">
-                    <!--<div class="share-content">
-                        <a class="share-icon icon-weibo"><i class="fa fa-weibo"></i></a>
-                        <a class="share-icon icon-weixin" style="margin-left:10px;"><i class="fa fa-weixin"></i></a>
-                        <a class="share-icon icon-google" style="margin-left:10px;"><i class="fa fa-google-plus"></i></a>
-                        <a class="share-icon icon-qq" style="margin-left:10px;"><i class="fa fa-qq"></i></a>
-                    </div>-->
-
-	<div class="jiathis_style_24x24 Hui-share cl">
-		<a href="#" class="bds_weixin Hui-iconfont" data-cmd="weixin" title="分享到微信">&#xe694;</a>
-		<a href="#" class="bds_qzone Hui-iconfont" data-cmd="qzone" title="分享到QQ空间">&#xe6c8;</a>
-		<a href="#" class="bds_sqq Hui-iconfont" data-cmd="sqq" title="分享到QQ好友">&#xe67b;</a>
-		<a href="#" class="bds_tsina Hui-iconfont" data-cmd="tsina" title="分享到新浪微博">&#xe6da;</a>
-		<a href="#" class="bds_tqq Hui-iconfont" data-cmd="tqq" title="分享到腾讯微博">&#xe6d9;</a>
-		<a href="#" class="bds_douban Hui-iconfont" data-cmd="douban" title="分享到豆瓣网">&#xe67c;</a>
-	</div>
+                    <div class="jiathis_style_24x24 Hui-share cl">
+                        <a href="#" class="jiathis_button_weixin bds_weixin Hui-iconfont" data-cmd="weixin" title="分享到微信">&#xe694;</a>
+                        <a href="#" class="jiathis_button_qzone bds_qzone Hui-iconfont" data-cmd="qzone" title="分享到QQ空间">&#xe6c8;</a>
+                        <a href="#" class="jiathis_button_cqq bds_sqq Hui-iconfont" data-cmd="sqq" title="分享到QQ好友">&#xe67b;</a>
+                        <a href="#" class="jiathis_button_tsina bds_tsina Hui-iconfont" data-cmd="tsina" title="分享到新浪微博">&#xe6da;</a>
+                        <a href="#" class="jiathis_button_tqq bds_tqq Hui-iconfont" data-cmd="tqq" title="分享到腾讯微博">&#xe6d9;</a>
+                        <a href="#" class="jiathis_button_douban bds_douban Hui-iconfont" data-cmd="douban" title="分享到豆瓣网">&#xe67c;</a>
+                    </div>
+                    <!-- JiaThis Button BEGIN -->
+                    <!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2136702" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 	<script type="text/javascript">
 	var jiathis_config = {
         boldNum:0,
@@ -95,10 +92,10 @@
         imageUrl:"http://v2.jiathis.com/code/images/r5.gif",
         imageWidth:26,
         marginTop:150,
-        url:"http://www.jiathis.com",
-        title:"自定义TITLE #微博话题#",
-        summary:"分享的文本摘要",
-        pic:"自定义分享的图片连接地址",
+        url:"http://riseming.cn/blog/{{Article.id}}/article/",
+        title:"{{Article.title}} | Ming的个人博客",
+        summary:"{{Article.intro}}",
+        pic:"http://riseming.cn/media/upload/{{Article.image}}",
         data_track_clickback:true,
         appkey:{
             "tsina":"您网站的新浪微博APPKEY",
@@ -117,7 +114,17 @@
 	</script>
 
                 </div>
+                <!--上一篇下一篇-->
+                <div id="next" class="next">
+                    {% if pre %}
+                    上一篇：<a href="/blog/{{pre.id}}/article/">{{ pre.title }}</a><br/>
+                    {% endif %}
+                    {% if next %}
+                    下一篇：<a href="/blog/{{next.id}}/article/">{{ next.title }}</a>
+                    {% endif %}
+                </div>
             </div>
+
             <div class="article_comments">
                 <!-- UY BEGIN -->
                 <div id="uyan_frame"></div>
@@ -144,37 +151,7 @@
 					<strong>最新文章</strong>
 					</a>
 					<div class="widget-inner-list">
-                        {% getLasestArticle as latestArticle %}
-						<ul>
-                            {% for latestArc in latestArticle %}
-                            {% if latestArc.readCount <= 100 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-primary radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% elif latestArc.readCount > 100 and latestArc.readCount <= 200 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/"  target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-secondary radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% elif latestArc.readCount > 200 and latestArc.readCount <= 300 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/"  target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-success radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% elif latestArc.readCount > 300 and latestArc.readCount <= 500 %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-warning radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% else %}
-                            <li>
-                                <a href="/blog/{{latestArc.id}}/article/" target="_blank" class="text-overflow va-m">{{ latestArc.title }}</a>
-                                <span class="badge badge-danger radius f-r readcount">{{ latestArc.readCount }}</span>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
+                        {% include 'latest.html' %}
 					</div>
 				</div>
 			</div>
@@ -185,28 +162,7 @@
 					<strong>最新评论</strong>
 					</a>
 					<div class="widget-inner-list">
-					    <ul>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">一般windows10下面不会有这个</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">楼主博客不错，大赞</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">我想问下你这个地方是怎么实现的</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</span>
-                            </li>
-                            <li>
-                                <img class="round" src="/static/images/a.jpg" width="40" height="40"/>
-                                <span class="comment-log va-m text-overflow">也许就是这样的吧</span>
-                            </li>
-                        </ul>
+					    {% include 'last_comments.html' %}
 					</div>
 				</div>
 			</div>
@@ -217,40 +173,16 @@
 					<strong><i class="fa fa-snowflake-o"></i>发现</strong>
 					</a>
 					<div class="widget-inner-tag">
-                        {% getTag as tagList %}
-					     {% for tag in tagList %}
-                        {% if tag.labelColor == '1' %}
-                        <span class="tag color-1" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '2' %}
-                        <span class="tag color-2" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '3' %}
-                        <span class="tag color-3" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '4' %}
-                        <span class="tag color-4" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '5' %}
-                        <span class="tag color-5" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% elif tag.labelColor == '6' %}
-                        <span class="tag color-6" data-id="54">{{ tag.labelName }} ({{ tag.count }})</span>
-                        {% endif %}
-                        {% endfor %}
+                        {% include 'label.html' %}
 					</div>
 				</div>
 			</div>
-			<div id="tabs" class="widget-right">
-				<ul class="widget-nav">
-					<li class="aa" id="1"><a href="#tabs-1" title="">关于本站</a></li>
-					<li class="aa" id="2"><a href="#tabs-2" title="">友情链接</a></li>
-				</ul>
-				<div id="tabs_container">
-					<div id="tabs-1">
-						<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus.</p>
-					</div>
-					<div id="tabs-2" class="friendslink">
-                        <li><a href="http://www.my-eclipse.cn" rel="me" target="_blank">MyEclipse中文网</a></li>
-                        <li><a href="http://www.my-eclipse.cn" rel="me" target="_blank">MyEclipse中文网</a></li>
-                        <li><a href="http://www.my-eclipse.cn" rel="me" target="_blank">MyEclipse中文网</a></li>
-					</div>
-				</div>
+			<div>
+				<div id="tabs" class="widget HuiTab">
+                    <div class="tabBar clearfix"><span>关于我</span><span>友情链接</span></div>
+                    <div class="tabCon"></div>
+                    <div class="tabCon">内容二</div>
+			    </div>
 			</div>
         <!--right end-->
        </div>
@@ -266,6 +198,7 @@
 var $backToTopEle=$('<a href="javascript:void(0)" class="Hui-iconfont toTop" title="返回顶部" alt="返回顶部" style="display:none">&#xe684;</a>').appendTo($("body")).click(function(){
 $("html, body").animate({ scrollTop: 0 }, 120);
 });
+$.Huitab("#tabs .tabBar span","#tabs .tabCon","current","click","0");
 var backToTopFun = function() {
 	var st = $(document).scrollTop(), winh = $(window).height();
 	(st > 0)? $backToTopEle.show(): $backToTopEle.hide();
