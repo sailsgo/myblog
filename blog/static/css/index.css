@@ -321,3 +321,7 @@ p{text-indent:2em;}
                 z-index: 9999;
                 background: url('../images/1.gif') 50% 50% no-repeat rgb(249, 249, 249);
             }
+.tabCon img{
+    width:100px;height:100px;border-radius:100px;text-align: center;
+    display: block;margin: 15px auto;
+}

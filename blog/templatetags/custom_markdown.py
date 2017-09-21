@@ -1,62 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-import markdown2
 
+
+import houdini as h
+import misaka as m
 from django import template
+from pygments import highlight
+from pygments.formatters import HtmlFormatter, ClassNotFound
+from pygments.lexers import get_lexer_by_name
 from django.template.defaultfilters import stringfilter
-from django.utils.encoding import force_text
-from django.utils.safestring import mark_safe
-
 register = template.Library()
 
 @register.filter(is_safe=True)
 @stringfilter
-def custom_markdown(value):
-    return mark_safe(markdown.markdown(force_text(value),
-        extras=["markdown.extensions.extra","markdown.extensions.codehilite","markdown.extensions.toc","markdown.extensions.table"]))
-"""
-from django import template
-import mistune
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import HtmlFormatter
+class HighlighterRenderer(m.HtmlRenderer):
+    def blockcode(self, text, lang):
+        try:
+            lexer = get_lexer_by_name(lang, stripall=True)
+        except ClassNotFound:
+            lexer = None
 
-register = template.Library()
+        if lexer:
+            formatter = HtmlFormatter()
+            return highlight(text, lexer, formatter)
+        # default
+        return '\n<pre><code>{}</code></pre>\n'.format(
+                            h.escape_html(text.strip()))
 
-def block_code(text, lang, inlinestyles=False, linenos=False):
-    if not lang:
-        text = text.strip()
-        return u'<pre><code>%s</code></pre>\n' % mistune.escape(text)
-
-    try:
-        lexer = get_lexer_by_name(lang, stripall=True)
-        formatter = HtmlFormatter(
-            noclasses=inlinestyles, linenos=linenos
-        )
-        code = highlight(text, lexer, formatter)
-        if linenos:
-            return '<div class="highlight">%s</div>\n' % code
-        return code
-    except:
-        return '<pre class="%s"><code>%s</code></pre>\n' % (
-            lang, mistune.escape(text)
-        )
-
-
-class HighlightMixin(object):
-    def block_code(self, text, lang):
-        # renderer has an options
-        inlinestyles = self.options.get('inlinestyles')
-        #linenos = self.options.get('linenos')
-        return block_code(text, lang)
-
-
-class TocRenderer(HighlightMixin, mistune.Renderer):
-    pass
 
 @register.filter
 def custom_markdown(value):
-    renderer = TocRenderer(linenos=True, inlinestyles=False)
-    mdp = mistune.Markdown(escape=True, renderer=renderer)
-    return mdp(value)
+
+    renderer = HighlighterRenderer()
+    md = m.Markdown(renderer, extensions=('fenced-code','tables','highlight'))
+    return md(value)
