@@ -22,6 +22,7 @@
 	<div class="row_content" style="overflow: auto;">
 		<div class="left_content">
 			<!--滚动横幅-->
+            <!--
 			<div id="focusImage" class="slide">
 				<ul class="contents">
 					<li class="current">
@@ -67,6 +68,38 @@
 					<a href="javascript:;"><img src="/static/images/c.jpg" width="70" height="38"></a>
 					<a href="javascript:;"><img src="/static/images/d.jpg" width="70" height="38"></a>
 					<a href="javascript:;"><img src="/static/images/e.jpg" width="70" height="38"></a>
+				</div>
+
+				<div class="icon-dot">
+					<a href="javascript:;" class="cur current"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+				</div>
+
+				<span class="link-watch pre down"></span>
+				<span class="link-watch next down"></span>
+			</div>
+            -->
+            {% get_scroll as alist %}
+            <div id="focusImage" class="slide">
+				<ul class="contents">
+                    {% for sr in alist %}
+					<li class="current">
+						<div class="image"><a href="#"><img src="{{sr.image}}" width="600" height="282"></a></div>
+						<div class="text">
+							<span class="title"><a href="#">{{ sr.title }}</a></span>
+							<p>{{ sr.intro }}</p>
+						</div>
+					</li>
+                    {% endfor %}
+				</ul>
+
+				<div class="triggers">
+                    {% for sr in alist %}
+					<a href="javascript:;" class="cur current"><img src="{{ sr.image }}" width="78" height="38"></a>
+					{% endfor %}
 				</div>
 
 				<div class="icon-dot">
