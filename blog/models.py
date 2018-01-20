@@ -48,7 +48,6 @@ class Article(models.Model):
     label = models.ManyToManyField(Label,verbose_name='文章标签')
     intro = models.CharField(max_length=100,verbose_name='文章简介',blank=True,null=True) #文章简介blank针对校验
     status = models.CharField(choices=status_choices,max_length=3,default='0',verbose_name='是否显示')
-    qiniu_url = models.CharField(max_length=100,verbose_name='七牛云图片URL')    #用于将简介图存储到七牛云
     # 重写save方法
     def save(self, *args, **kwargs):
         if not self.intro:

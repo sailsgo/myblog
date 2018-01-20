@@ -130,3 +130,11 @@ TEMPLATE_DIRS = [
 }]
 DATETIME_FORMAT = 'Y-m-d H:i:s'
 DATE_FORMAT = 'Y-m-d'
+QINIU_ACCESS_KEY='eo8KrWCHq3gJe53OhK1Zv33iHF_FVYDe6TymSCyZ'
+QINIU_SECRET_KEY='LhJAkfoEJcbd7-m7m5lMliTO1gg7aCFIA5eTmBmg'
+QINIU_BUCKET_NAME='images'
+QINIU_BUCKET_DOMAIN='pic.riseming.cn'
+PREFIX_URL = 'http://'
+MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media/upload/')
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
