@@ -77,14 +77,14 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+# 'PASSWORD':'Mjy@123',
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myblog',
         'USER':'root',
-        'PASSWORD':'Mjy@123',
-        'HOST':'139.199.189.200',
+        'PASSWORD':'',
+        'HOST':'127.0.0.1',
         'PORT':'3306',
     },       
     'sqllite': {
