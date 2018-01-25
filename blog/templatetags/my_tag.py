@@ -3,6 +3,7 @@
 
 from ..models import *
 from django import template
+from django.conf import settings
 from django.db.models.aggregates import Count
 
 register = template.Library()
@@ -42,3 +43,10 @@ def get_uyan():
 def get_scroll():
     scollArticle = Article.objects.filter(status='1').filter(category_id='2')
     return scollArticle
+
+
+
+# settings value
+@register.simple_tag
+def setVal(name):
+    return getattr(settings, name, "")

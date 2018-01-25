@@ -135,6 +135,10 @@ QINIU_SECRET_KEY='LhJAkfoEJcbd7-m7m5lMliTO1gg7aCFIA5eTmBmg'
 QINIU_BUCKET_NAME='images'
 QINIU_BUCKET_DOMAIN='pic.riseming.cn'
 PREFIX_URL = 'http://'
+MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN +'/'
+"""
+PREFIX_URL = 'http://'
 MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media/upload/')
+MEDIA_ROOT = 'media'
 DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
+"""

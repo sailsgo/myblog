@@ -46,8 +46,8 @@
 							<p>与迄今为止的系列相比，《丧尸围城4》让更多的玩家能够轻松上手，但新游戏收到的意见更加宽泛。在未来Capcom打算通过发布额外的数字下载内容来持续增加游戏销量。</p>
 						</div>
 					</li>
-					<li>
-						<div class="image"><a href="#"><img src="/static/images/d.jpg" width="600" height="282"></a></div>
+					<li>static
+						<div class="image"><a href="#"><img src="//images/d.jpg" width="600" height="282"></a></div>
 						<div class="text">
 							<span class="title"><a href="#">国外暴雪玩家3D打印《星际争霸2》虫族单位</a></span>
 							<p>近日，暴雪游戏死忠粉3D打印设计师Francesco Orrù通过建模软件ZBrush与3D打印，完成自己的《星际争霸2》3D打印作品新作，让我们来一同鉴赏。</p>
@@ -129,7 +129,7 @@
                     {% for title in Articles %}
 					<dl class="blog_list clearfix">
                         <dt>
-                            <a href="/blog/{{title.id}}/article/" target="_blank"><img width="150" height="100" src="/media/upload/{{title.image}}" class="head"></a>
+                            <a href="/blog/{{title.id}}/article/" target="_blank"><img width="150" height="100" src="{% setVal "MEDIA_URL" %}{{ title.image}}" class="head"></a>
                             <span>{{title.author}}</span>
                         </dt>
                         <dd>
