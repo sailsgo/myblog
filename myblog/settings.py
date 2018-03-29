@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'myblog',
         'USER':'root',
         'PASSWORD':'Mjy@123',
-        'HOST':'139.199.189.200',
+        'HOST':'193.112.111.156',
         'PORT':'3306',
     },       
     'sqllite': {
