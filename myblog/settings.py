@@ -85,10 +85,6 @@ DATABASES = {
         'HOST':'193.112.111.156',
         'USER':'root',
         'PASSWORD':'Mjy@123',
-<<<<<<< HEAD
-=======
-        'HOST':'193.112.111.156',
->>>>>>> aae0f750f14bd581ed0d7f889c8c7691fd78805e
         'PORT':'3306',
     },       
     'sqllite': {
