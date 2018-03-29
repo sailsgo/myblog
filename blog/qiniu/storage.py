@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+git#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from django.core.files.storage import FileSystemStorage
