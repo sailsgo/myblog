@@ -83,8 +83,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myblog',
         'USER':'root',
-        'PASSWORD':'',
-        'HOST':'127.0.0.1',
+        'PASSWORD':'Mjy@123',
+        'HOST':'193.112.111.156',
         'PORT':'3306',
     },       
     'sqllite': {
