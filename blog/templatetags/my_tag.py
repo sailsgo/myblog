@@ -3,6 +3,7 @@
 
 from ..models import *
 from django import template
+from django.conf import settings
 from django.db.models.aggregates import Count
 
 register = template.Library()
@@ -37,3 +38,15 @@ def get_hots():
 def get_uyan():
     comment = uyan_comment.objects.all().order_by("time")[0:5]
     return comment
+#获取滚动栏信息
+@register.simple_tag()
+def get_scroll():
+    scollArticle = Article.objects.filter(status='1').filter(category_id='2')
+    return scollArticle
+
+
+
+# settings value
+@register.simple_tag
+def setVal(name):
+    return getattr(settings, name, "")

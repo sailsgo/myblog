@@ -139,7 +139,7 @@ html命名规范：
 	Explain:		重定义浏览器默认样式
 */
 *{word-wrap:break-word}
-html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
+html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
 ul,ol,dl{list-style-type:none}
 html,body{*position:static}
 html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
@@ -653,7 +653,7 @@ kbd{}	/*键盘文本*/
 code{}	/*计算机代码文本*/
 dfn{font-style: italic}	/*一个定义项目*/
 del{font-family:Simsun}	/*删除线*/
-code,kbd,pre,samp {font-family: monospace, serif;font-size: 1em}
+/*code,kbd,pre,samp {font-family: monospace, serif;font-size: 1em}*/
 
 .uppercase{text-transform:uppercase} /*文字大写*/
 .lowercase{text-transform:lowercase} /*文字小写*/

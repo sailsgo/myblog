@@ -2,7 +2,8 @@
 from django.db import models
 import markdown
 from django.utils.html import strip_tags
-
+from django.core.files.storage import FileSystemStorage
+from qiniu.storage import ImageStorage
 
 # Create your models here.
 class Author(models.Model):
@@ -42,7 +43,7 @@ class Article(models.Model):
     publishDate = models.DateField(null=True,verbose_name='发表日期')        #发表日期
     author = models.ForeignKey(Author,verbose_name='作者')      #作者，关联
     category = models.ForeignKey(Category,verbose_name='文章类别')      #分类，关联
-    image = models.ImageField(upload_to='',max_length=100,verbose_name='简介图')    #图片
+    image = models.ImageField(upload_to='',max_length=100,verbose_name='简介图',storage=ImageStorage())    #图片
     readCount = models.IntegerField(verbose_name='阅读次数',null=True,blank=True,default=1)    #浏览次数
     content = models.TextField(verbose_name='文章内容')   #文章内容
     label = models.ManyToManyField(Label,verbose_name='文章标签')
@@ -106,6 +107,7 @@ class uyan_comment(models.Model):
         verbose_name_plural = u'友言评论'
     def __unicode__(self):
         return self.content
-    
-    
-    
+
+
+#上传图片到七牛云存储
+

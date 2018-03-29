@@ -77,14 +77,14 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+# 'PASSWORD':'Mjy@123',
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myblog',
+        'HOST':'193.112.111.156',
         'USER':'root',
         'PASSWORD':'Mjy@123',
-        'HOST':'193.112.111.156',
         'PORT':'3306',
     },       
     'sqllite': {
@@ -130,3 +130,15 @@ TEMPLATE_DIRS = [
 }]
 DATETIME_FORMAT = 'Y-m-d H:i:s'
 DATE_FORMAT = 'Y-m-d'
+QINIU_ACCESS_KEY='eo8KrWCHq3gJe53OhK1Zv33iHF_FVYDe6TymSCyZ'
+QINIU_SECRET_KEY='LhJAkfoEJcbd7-m7m5lMliTO1gg7aCFIA5eTmBmg'
+QINIU_BUCKET_NAME='images'
+QINIU_BUCKET_DOMAIN='pic.riseming.cn'
+PREFIX_URL = 'http://'
+MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN +'/'
+"""
+PREFIX_URL = 'http://'
+MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+MEDIA_ROOT = 'media'
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
+"""

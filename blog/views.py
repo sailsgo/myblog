@@ -24,7 +24,8 @@ def index(request,currPage=1):
     articles = Article.objects.filter(status='1')[index:left]
     print articles
     #获取天气信息
-    weather = getWeather(request)
+    #weather = getWeather(request)
+    weather = None
     return render(request,'index.html',{'Articles':articles,'Weather':weather,'pageCount':pageCount,'currPage':currPage})
 def article_content(request,aid):
     #获取文章信息
